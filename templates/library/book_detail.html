@@ -1,0 +1,86 @@
+{% extends 'library/base.html' %}
+
+{% block title %}{{ book.title }} - Library{% endblock %}
+
+{% block content %}
+<a href="{% url 'book_list' %}" class="back-link">&larr; Back to all books</a>
+<div class="detail-card">
+    <div class="detail-header">
+        <h2>{{ book.title }}</h2>
+        <div class="meta">ISBN: {{ book.isbn }}</div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Cover</h3>
+        {% if book.cover_image %}
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" style="max-width:200px;border-radius:5px;">
+        {% else %}
+        <p>No cover image available.</p>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Author</h3>
+        <div class="info-grid">
+            <span class="info-label">Name:</span>
+            <span>{{ book.author.first_name }} {{ book.author.last_name }}</span>
+
+            {% with profile=book.author.profile %}
+            {% if profile %}
+            <span class="info-label">Email:</span>
+            <span>{{ profile.email }}</span>
+            <span class="info-label">Phone:</span>
+            <span>{{ profile.phone_number }}</span>
+            <span class="info-label">Website:</span>
+            <span>{{ profile.website }}</span>
+            {% endif %}
+            {% endwith %}
+
+            {% if book.author.date_of_birth %}
+            <span class="info-label">Date of Birth:</span>
+            <span>{{ book.author.date_of_birth }}</span>
+            {% endif %}
+
+            {% if book.author.biography %}
+            <span class="info-label">Biography:</span>
+            <span>{{ book.author.biography }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Categories</h3>
+        <div class="tags">
+            {% for cat in book.categories.all %}
+            <span class="tag">{{ cat.name }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Publications (Publishers)</h3>
+        <table class="publications-table">
+            <thead>
+                <tr>
+                    <th>Publisher</th>
+                    <th>Edition</th>
+                    <th>Publication Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pub in book.publications.all %}
+                <tr>
+                    <td>{{ pub.publisher.name }}</td>
+                    <td>{{ pub.edition }}</td>
+                    <td>{{ pub.publication_date }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No publication data available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

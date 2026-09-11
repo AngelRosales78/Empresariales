@@ -1,0 +1,27 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Books List - Library{% endblock %}
+
+{% block content %}
+<h2>All Books</h2>
+<ul class="book-list">
+    {% for book in books %}
+    <li class="book-item">
+        {% if book.cover_image %}
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+        {% else %}
+        <div style="width:100px;height:150px;background:#ecf0f1;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:0.7em;color:#7f8c8d;">No Cover</div>
+        {% endif %}
+        <div class="info">
+            <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a>
+            <div class="meta">by {{ book.author.first_name }} {{ book.author.last_name }}</div>
+            <div class="tags">
+                {% for cat in book.categories.all %}
+                <span class="tag">{{ cat.name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

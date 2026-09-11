@@ -1,4 +1,5 @@
 {
+  "$schema": "https://opencode.ai/config.json",
   "agents": {
     "django-project-setup": {
       "description": "Sets up the Django project structure with virtual environment, src/, config/, requirements.txt, .gitignore, and the quiz app declared in INSTALLED_APPS",
