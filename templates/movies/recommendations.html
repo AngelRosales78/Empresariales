@@ -1,0 +1,35 @@
+{% extends 'movies/base.html' %}
+{% block title %}Recommendations for {{ current_movie.title }}{% endblock %}
+{% block content %}
+<a href="{% url 'movies:index' %}" class="back-link">&larr; Back to all movies</a>
+
+<div class="card">
+    <h2>{{ current_movie.title }}</h2>
+    <p class="meta">Genres: {{ current_movie.genres.all|join:", " }}</p>
+    <p class="meta">Release: {{ current_movie.release_date|date:"Y" }}</p>
+    <p class="meta">Duration: {{ current_movie.duration }} min</p>
+    {% if current_avg %}
+        <p class="score">Avg Score: {{ current_avg|floatformat:1 }}/10 ({{ current_num_ratings }} ratings)</p>
+    {% else %}
+        <p class="meta">No ratings yet.</p>
+    {% endif %}
+    <p>{{ current_movie.synopsis }}</p>
+</div>
+
+<div class="card">
+    <h3>Recommended Movies (same genres, top-rated)</h3>
+    {% if recommendations %}
+        {% for rec in recommendations %}
+        <div class="rec-item">
+            <div>
+                <a href="{% url 'movies:recommendations' rec.pk %}">{{ rec.title }}</a>
+                <span class="meta"> ({{ rec.release_date|date:"Y" }})</span>
+            </div>
+            <div class="score">{{ rec.avg_score|floatformat:1 }}/10 <span class="meta">({{ rec.num_ratings }} ratings)</span></div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="meta">No recommendations found for this movie.</p>
+    {% endif %}
+</div>
+{% endblock %}

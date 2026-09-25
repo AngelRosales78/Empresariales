@@ -1,0 +1,29 @@
+{% extends 'movies/base.html' %}
+{% block title %}All Movies{% endblock %}
+{% block content %}
+<h2>All Movies</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Release Date</th>
+            <th>Avg Score</th>
+            <th>Ratings</th>
+            <th>Recommend</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td><a href="{% url 'movies:recommendations' movie.pk %}">{{ movie.title }}</a></td>
+            <td>{{ movie.release_date|date:"Y" }}</td>
+            <td class="score">{{ movie.avg_score|default:"N/A"|floatformat:1 }}</td>
+            <td>{{ movie.num_ratings }}</td>
+            <td><a href="{% url 'movies:recommendations' movie.pk %}">Recommendations</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No movies yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

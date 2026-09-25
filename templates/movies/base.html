@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - {% block title %}Recommendations{% endblock %}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a2e;
+            color: #eee;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #16213e;
+            padding: 1.5rem 2rem;
+            border-bottom: 3px solid #e94560;
+        }
+        header h1 { color: #e94560; }
+        header nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+        header nav a:hover { color: #e94560; }
+        main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+        .card {
+            background: #16213e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #0f3460;
+        }
+        .card h2 { color: #e94560; margin-bottom: 1rem; }
+        .card h3 { color: #e94560; margin-bottom: 0.75rem; font-size: 1.1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .score { color: #f5c518; font-weight: bold; font-size: 1.1rem; }
+        .rec-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #0f3460;
+        }
+        .rec-item:last-child { border-bottom: none; }
+        .rec-item a { color: #4fc3f7; text-decoration: none; }
+        .rec-item a:hover { text-decoration: underline; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 0.6rem 1rem; text-align: left; border-bottom: 1px solid #0f3460; }
+        th { background: #0f3460; color: #e94560; }
+        td a { color: #4fc3f7; text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'movies:index' %}" style="color:#e94560; text-decoration:none;">Movies</a></h1>
+        <nav>
+            <a href="{% url 'movies:index' %}">All Movies</a>
+            <a href="/admin/">Admin Panel</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
