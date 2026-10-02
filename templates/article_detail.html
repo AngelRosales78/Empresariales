@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Portal de Noticias{% endblock %}
+
+{% block content %}
+<article class="article-full">
+    {% if article.featured_image %}
+    <div class="article-full-image">
+        <img src="{{ article.featured_image.url }}" alt="{{ article.title }}">
+    </div>
+    {% endif %}
+
+    <div class="article-full-body">
+        <div class="article-full-meta">
+            {% if article.category %}
+            <span class="article-category">
+                <a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a>
+            </span>
+            {% endif %}
+            <span class="article-date">{{ article.published_at|date:"d \de F \de Y" }}</span>
+            <span class="article-author">Por <strong>{{ article.author.name }}</strong></span>
+        </div>
+
+        <h1 class="article-full-title">{{ article.title }}</h1>
+
+        {% if article.categories.all %}
+        <div class="article-tags">
+            <strong>Categor&#237;as:</strong>
+            {% for cat in article.categories.all %}
+            <a href="{{ cat.get_absolute_url }}" class="tag">{{ cat.name }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="article-content">
+            {{ article.content|linebreaks }}
+        </div>
+    </div>
+</article>
+
+<a href="{% url 'appnews:home' %}" class="back-link">&larr; Volver al inicio</a>
+{% endblock %}

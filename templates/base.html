@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portal de Noticias{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">
+                <a href="{% url 'appnews:home' %}">Portal de Noticias</a>
+            </h1>
+            <nav class="site-nav">
+                <a href="{% url 'appnews:home' %}">Inicio</a>
+                {% for cat in categories|default:"" %}
+                <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+                {% endfor %}
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <aside class="sidebar">
+            {% block sidebar %}
+            <div class="sidebar-widget">
+                <h2>Categorías</h2>
+                <ul>
+                    {% for cat in categories %}
+                    <li>
+                        <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endblock %}
+        </aside>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; {% now "Y" %} Portal de Noticias. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
