@@ -1,0 +1,30 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<div class="article-card">
+    {% if article.featured_image %}
+    <div class="article-card-image">
+        <a href="{{ article.get_absolute_url }}">
+            <img src="{{ article.featured_image.url }}" alt="{{ article.title }}">
+        </a>
+    </div>
+    {% endif %}
+    <div class="article-card-body">
+        <div class="article-card-meta">
+            {% if article.category %}
+            <span class="article-category">
+                <a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a>
+            </span>
+            {% endif %}
+            <span class="article-date">{{ article.published_at|date:"d M Y" }}</span>
+        </div>
+        <h2 class="article-card-title">
+            <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+        </h2>
+        <p class="article-card-summary">{{ article.summary|truncatewords:30|default:article.title }}</p>
+        <div class="article-card-footer">
+            <span class="article-author">Por {{ article.author.name }}</span>
+            <a href="{{ article.get_absolute_url }}" class="read-more">Leer m&#225;s &rarr;</a>
+        </div>
+    </div>
+</div>
