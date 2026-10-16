@@ -43,7 +43,7 @@ class Result:
 
 
 def exit_code_for(status: int) -> int:
-    if 200 <= status <= 299:
+    if 200 <= status <= 204:
         return EXIT_OK
     if status == 400:
         return EXIT_VALIDATION
@@ -58,11 +58,14 @@ def exit_code_for(status: int) -> int:
 
 def build_question_payload(exam_id: int, text: str, choices: list[str]) -> dict:
     parsed = []
-    for c in choices:
-        if c.endswith(":ok"):
-            parsed.append({"text": c[:-3], "is_correct": True})
+    for raw in choices:
+        if raw.endswith(":ok"):
+            text_val = raw[:-3]
+            is_correct = True
         else:
-            parsed.append({"text": c, "is_correct": False})
+            text_val = raw
+            is_correct = False
+        parsed.append({"text": text_val, "is_correct": is_correct})
     return {"exam": exam_id, "text": text, "choices": parsed}
 
 

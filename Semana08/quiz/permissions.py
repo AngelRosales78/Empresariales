@@ -11,24 +11,13 @@ class AgentPermission(BasePermission):
       - a member of the group «agente» can read, create and modify, but NEVER delete;
       - anybody else who is logged in can only read;
       - an unknown method is denied (deny by default).
-
-    TODO(team): implement it. As it stands, `return True` lets everything through, so the
-    agent's token can delete and `python manage.py test quiz.tests.test_permissions` fails.
     """
 
     def has_permission(self, request, view):
-        user = request.user
-        if user.is_authenticated:
-            if user.is_staff:
-                return True
-            if request.method in ("GET", "HEAD", "OPTIONS"):
-                return True
-            if request.method in ("POST", "PUT", "PATCH"):
-                if user.groups.filter(name=AGENT_GROUP).exists():
-                    return True
-                return False
-            if request.method == "DELETE":
-                if user.groups.filter(name=AGENT_GROUP).exists():
-                    return False
-                return True
+        if request.user and request.user.is_staff:
+            return True
+        if request.user and request.user.groups.filter(name=AGENT_GROUP).exists():
+            return request.method in ("GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH")
+        if request.user and request.user.is_authenticated:
+            return request.method in ("GET", "HEAD", "OPTIONS")
         return False
