@@ -1,0 +1,8 @@
+[
+  {
+    "level": "error",
+    "message": "Invalid DOM property `%s`. Did you mean `%s`? class className",
+    "timestamp": "2026-10-30T20:29:45.557Z",
+    "url": "http://127.0.0.1:5179/@vite/client"
+  }
+]

@@ -1,0 +1,1 @@
+export default function Example() { return <main><h1>Laboratorio restaurado</h1><p>Los tres errores están documentados. La aplicación principal funciona sin ellos.</p><a href="/">Volver a Cinéclub</a></main> }

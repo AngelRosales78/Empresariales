@@ -1,0 +1,26 @@
+[
+  {
+    "level": "error",
+    "message": "Invalid DOM property `%s`. Did you mean `%s`? class className",
+    "timestamp": "2026-10-30T20:29:45.557Z",
+    "url": "http://127.0.0.1:5179/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "[vite] Failed to reload /experiments/Example.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)",
+    "timestamp": "2026-10-30T20:30:00.528Z",
+    "url": "http://127.0.0.1:5179/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "Each child in a list should have a unique \"key\" prop.%s%s See https://react.dev/link/warning-keys for more information. \n\nCheck the render method of `Example`. ",
+    "timestamp": "2026-10-30T20:30:47.547Z",
+    "url": "http://127.0.0.1:5179/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "Each child in a list should have a unique \"key\" prop.%s%s See https://react.dev/link/warning-keys for more information. \n\nCheck the render method of `Example`. ",
+    "timestamp": "2026-10-30T20:30:54.273Z",
+    "url": "http://127.0.0.1:5179/@vite/client"
+  }
+]

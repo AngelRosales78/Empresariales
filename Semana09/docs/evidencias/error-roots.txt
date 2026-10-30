@@ -1,0 +1,29 @@
+HTTP 500
+
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <title>Error</title>
+            <script type="module">
+              const error = {"message":"Transform failed with 1 error:\n\n[PARSE_ERROR] Adjacent JSX elements must be wrapped in an enclosing tag.\n   ╭─[ experiments/Example.jsx:3:3 ]\n   │\n 3 │   \u003cp>Segundo nodo sin fragmento\u003c/p>\n   │   ┬  \n   │   ╰── \n   │ \n   │ Help: Did you want a JSX fragment `\u003c>...\u003c/>`?\n───╯\n","stack":"    at transformWithOxc (file:///C:/Users/ADMIN/Ciclo4/Empresariales/Semana09/node_modules/vite/dist/node/chunks/node.js:7618:19)\n    at TransformPluginContext.transform (file:///C:/Users/ADMIN/Ciclo4/Empresariales/Semana09/node_modules/vite/dist/node/chunks/node.js:7690:26)\n    at EnvironmentPluginContainer.transform (file:///C:/Users/ADMIN/Ciclo4/Empresariales/Semana09/node_modules/vite/dist/node/chunks/node.js:8582:51)\n    at async loadAndTransform (file:///C:/Users/ADMIN/Ciclo4/Empresariales/Semana09/node_modules/vite/dist/node/chunks/node.js:20155:26)\n    at async viteTransformMiddleware (file:///C:/Users/ADMIN/Ciclo4/Empresariales/Semana09/node_modules/vite/dist/node/chunks/node.js:20375:20)","id":"C:/Users/ADMIN/Ciclo4/Empresariales/Semana09/experiments/Example.jsx","frame":"","plugin":"vite:oxc","pluginCode":"export default function Example() { return (\n  \u003ch1>Primer nodo\u003c/h1>\n  \u003cp>Segundo nodo sin fragmento\u003c/p>\n) }\n"}
+              try {
+                const { ErrorOverlay } = await import("/@vite/client")
+                document.body.appendChild(new ErrorOverlay(error))
+              } catch {
+                const h = (tag, text) => {
+                  const el = document.createElement(tag)
+                  el.textContent = text
+                  return el
+                }
+                document.body.appendChild(h('h1', 'Internal Server Error'))
+                document.body.appendChild(h('h2', error.message))
+                document.body.appendChild(h('pre', error.stack))
+                document.body.appendChild(h('p', '(Error overlay failed to load)'))
+              }
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      

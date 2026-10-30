@@ -1,0 +1,17 @@
+{
+  "cards": 8,
+  "heroAction": "Explorar cartelera ↗",
+  "heroTarget": "#cartelera",
+  "horizontalOverflow": false,
+  "titles": [
+    "Órbita",
+    "La última luz",
+    "La casa del mar",
+    "Medianoche",
+    "El jardín secreto",
+    "Kilómetro cero",
+    "Pequeños gigantes",
+    "Entre notas"
+  ],
+  "width": 1280
+}
