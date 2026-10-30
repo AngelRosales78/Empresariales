@@ -1,0 +1,50 @@
+[
+  {
+    "level": "info",
+    "message": "[entrada inmediata] o",
+    "timestamp": "2026-10-30T20:50:13.108Z",
+    "url": "http://127.0.0.1:5180/src/App.jsx"
+  },
+  {
+    "level": "info",
+    "message": "[entrada inmediata] or",
+    "timestamp": "2026-10-30T20:50:13.221Z",
+    "url": "http://127.0.0.1:5180/src/App.jsx"
+  },
+  {
+    "level": "info",
+    "message": "[entrada inmediata] orb",
+    "timestamp": "2026-10-30T20:50:13.328Z",
+    "url": "http://127.0.0.1:5180/src/App.jsx"
+  },
+  {
+    "level": "info",
+    "message": "[entrada inmediata] orbi",
+    "timestamp": "2026-10-30T20:50:13.425Z",
+    "url": "http://127.0.0.1:5180/src/App.jsx"
+  },
+  {
+    "level": "info",
+    "message": "[entrada inmediata] orbit",
+    "timestamp": "2026-10-30T20:50:13.537Z",
+    "url": "http://127.0.0.1:5180/src/App.jsx"
+  },
+  {
+    "level": "info",
+    "message": "[entrada inmediata] orbita",
+    "timestamp": "2026-10-30T20:50:13.698Z",
+    "url": "http://127.0.0.1:5180/src/App.jsx"
+  },
+  {
+    "level": "info",
+    "message": "[búsqueda aplicada] orbita",
+    "timestamp": "2026-10-30T20:50:14.123Z",
+    "url": "http://127.0.0.1:5180/src/hooks/useDebouncedValue.js"
+  },
+  {
+    "level": "info",
+    "message": "[filtro ejecutado] {\"texto\":\"orbita\",\"genero\":\"Todas\",\"soloFavoritas\":false,\"resultados\":1}",
+    "timestamp": "2026-10-30T20:50:14.137Z",
+    "url": "http://127.0.0.1:5180/src/components/MovieList.jsx"
+  }
+]

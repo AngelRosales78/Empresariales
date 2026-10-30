@@ -1,0 +1,14 @@
+
+> semana10@0.0.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.64 kB │ gzip:  0.40 kB
+dist/assets/index-Fkj6zhnV.css   16.19 kB │ gzip:  4.33 kB
+dist/assets/index-c4WLOkhd.js   233.57 kB │ gzip: 73.35 kB
+
+✓ built in 363ms

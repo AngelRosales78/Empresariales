@@ -1,0 +1,11 @@
+{
+  "check": {
+    "allButtonsUseComponent": true,
+    "buttonCount": 42,
+    "cards": 8,
+    "favorites": "0 películas favoritas",
+    "horizontalOverflow": false,
+    "search": ""
+  },
+  "errors": []
+}
