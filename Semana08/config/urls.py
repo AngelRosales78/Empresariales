@@ -2,6 +2,7 @@ from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
+    path("api-auth/", include("rest_framework.urls")),
     path("api/", include("quiz.urls")),
     # The contract: a machine-readable description of every operation of the API.
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
