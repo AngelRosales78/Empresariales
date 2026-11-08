@@ -14,7 +14,7 @@
         <div class="article-full-meta">
             {% if article.category %}
             <span class="article-category">
-                <a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a>
+                <a href="{% url 'appnews:category_detail' article.category.slug %}">{{ article.category.name }}</a>
             </span>
             {% endif %}
             <span class="article-date">{{ article.published_at|date:"d \de F \de Y" }}</span>
@@ -27,7 +27,7 @@
         <div class="article-tags">
             <strong>Categor&#237;as:</strong>
             {% for cat in article.categories.all %}
-            <a href="{{ cat.get_absolute_url }}" class="tag">{{ cat.name }}</a>
+            <a href="{% url 'appnews:category_detail' cat.slug %}" class="tag">{{ cat.name }}</a>
             {% endfor %}
         </div>
         {% endif %}

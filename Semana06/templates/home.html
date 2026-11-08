@@ -3,15 +3,13 @@
 {% block title %}Inicio - Portal de Noticias{% endblock %}
 
 {% block content %}
-<h2 class="section-title">&#128240; &#208;ltimas Noticias</h2>
+<h2 class="section-title">&#128240; Últimas Noticias</h2>
 
-{% if articles %}
-    {% for article in articles %}
+{% for article in articles %}
         {% include "_article_card.html" with article=article %}
-    {% endfor %}
-{% else %}
+{% empty %}
     <div class="no-results">
         <p>No hay noticias disponibles en estos momentos.</p>
     </div>
-{% endif %}
+{% endfor %}
 {% endblock %}

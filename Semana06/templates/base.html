@@ -16,7 +16,7 @@
             <nav class="site-nav">
                 <a href="{% url 'appnews:home' %}">Inicio</a>
                 {% for cat in categories|default:"" %}
-                <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+                <a href="{% url 'appnews:category_detail' cat.slug %}">{{ cat.name }}</a>
                 {% endfor %}
             </nav>
         </div>
@@ -34,7 +34,7 @@
                 <ul>
                     {% for cat in categories %}
                     <li>
-                        <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+                        <a href="{% url 'appnews:category_detail' cat.slug %}">{{ cat.name }}</a>
                     </li>
                     {% endfor %}
                 </ul>

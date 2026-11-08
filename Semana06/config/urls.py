@@ -9,7 +9,7 @@ from django import VERSION
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('appnews.urls')),
+    path('', include('news.urls')),
 ]
 
 if settings.DEBUG:

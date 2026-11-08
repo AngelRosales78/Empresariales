@@ -6,13 +6,11 @@
 <h2 class="section-title">&#128196; {{ category.name }}</h2>
 <p class="category-description">{{ category.description|default:"Noticias de esta categor&#237;a." }}</p>
 
-{% if articles %}
-    {% for article in articles %}
+{% for article in articles %}
         {% include "_article_card.html" with article=article %}
-    {% endfor %}
-{% else %}
+{% empty %}
     <div class="no-results">
         <p>No hay noticias en la categor&#237;a "{{ category.name }}".</p>
     </div>
-{% endif %}
+{% endfor %}
 {% endblock %}

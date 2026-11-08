@@ -5,10 +5,11 @@ django.setup()
 
 from django.utils import timezone
 from datetime import timedelta
-from appnews.models import Category, Author, Article
+from news.models import Category, Author, Article
 from PIL import Image
 import os
 
+os.chdir(__import__("django.conf", fromlist=["settings"]).settings.BASE_DIR)
 os.makedirs("media/articles", exist_ok=True)
 os.makedirs("media/avatars", exist_ok=True)
 
@@ -105,7 +106,7 @@ articles_data = [
 ]
 
 for data in articles_data:
-    Article.objects.get_or_create(
+    article, created = Article.objects.get_or_create(
         slug=data["slug"],
         defaults={
             "title": data["title"],
@@ -118,6 +119,16 @@ for data in articles_data:
             "is_active": True,
         },
     )
+
+    article.categories.add(data["category"])
+    if created:
+        Article.objects.filter(pk=article.pk).update(published_at=now - timedelta(days=data["days_ago"]))
+
+sample = Article.objects.get(slug="ia-revoluciona-2026")
+marker = '<strong>Prueba de HTML del laboratorio 6</strong>'
+if marker not in sample.content:
+    sample.content += "\n\n" + marker
+    sample.save(update_fields=['content'])
 
 print("6 articles created successfully!")
 for a in Article.objects.all():
