@@ -1,0 +1,2 @@
+Access to XMLHttpRequest at 'http://127.0.0.1:8000/api/exams/?page=1' from origin 'http://127.0.0.1:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+Failed to load resource: net::ERR_FAILED

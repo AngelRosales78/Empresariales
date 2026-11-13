@@ -1,0 +1,7 @@
+Navegador, GET /api/ sin token: HTTP 401 (autenticación requerida).
+GET /api/exams/?page=1: esqueleto visible durante la espera y tabla al recibir los datos.
+POST /api/exams/ con título vacío: HTTP 400, {"title":["Este campo no puede estar en blanco."]}
+Alta válida HTTP 201, regreso al listado, borrado HTTP 204 y tabla actualizada.
+Origen retirado: el navegador bloqueó la solicitud por CORS y React mostró Reintentar.
+Origen restaurado: Reintentar recuperó la tabla.
+Django apagado con React abierto: Actualizar mostró el mensaje de conexión y el botón Reintentar.
