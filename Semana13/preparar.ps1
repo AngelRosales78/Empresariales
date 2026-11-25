@@ -5,24 +5,29 @@ function Invoke-LabCommand {
 
     & $Program @Arguments
     if ($LASTEXITCODE -ne 0) {
-        throw "Falló $Program $($Arguments -join ' ')"
+        throw "Command failed: $Program $($Arguments -join ' ')"
     }
 }
 
 Push-Location (Join-Path $PSScriptRoot 'api')
 try {
-    Invoke-LabCommand python @('-m', 'pip', 'install', '-r', 'requirements.txt')
-    Invoke-LabCommand python @('manage.py', 'migrate', '--noinput')
+    if (-not (Test-Path '.venv')) {
+        Invoke-LabCommand python @('-m', 'venv', '.venv')
+    }
+    $python = Join-Path (Get-Location) '.venv\Scripts\python.exe'
+    Invoke-LabCommand $python @('-m', 'pip', 'install', '--quiet', '-r', 'requirements.txt')
+    Invoke-LabCommand $python @('manage.py', 'migrate', '--noinput')
 
-    $hasExams = Invoke-LabCommand python @('manage.py', 'shell', '--verbosity', '0', '-c', 'from quiz.models import Exam; print(int(Exam.objects.exists()))')
-    if ($hasExams -eq '0' -and -not (Test-Path '..\react\.env.local')) {
-        Invoke-LabCommand python @('manage.py', 'seed_quiz', '--verbosity', '0')
+    # Seed only a brand new database, so deleted records do not come back.
+    if (-not (Test-Path '..\react\.env.local')) {
+        Invoke-LabCommand $python @('manage.py', 'seed_quiz', '--verbosity', '0')
+        Invoke-LabCommand $python @('manage.py', 'seed_catalog')
     }
-    $token = Invoke-LabCommand python @('manage.py', 'shell', '--verbosity', '0', '-c', 'from quiz.management.commands.seed_quiz import ensure_users; print(ensure_users()[0])')
+    $token = Invoke-LabCommand $python @('manage.py', 'shell', '--verbosity', '0', '-c', 'from quiz.management.commands.seed_quiz import ensure_users; print(ensure_users()[0])')
     if ($token -notmatch '^[a-f0-9]{40}$') {
-        throw 'No se pudo obtener el token local del laboratorio.'
+        throw 'Could not read the local lab token.'
     }
-    Set-Content -LiteralPath '..\react\.env.local' -Value "VITE_QUIZ_TOKEN=$token" -Encoding utf8
+    Set-Content -LiteralPath '..\react\.env.local' -Value "VITE_QUIZ_TOKEN=$token" -Encoding ascii
 } finally {
     Pop-Location
 }
