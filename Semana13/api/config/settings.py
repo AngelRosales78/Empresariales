@@ -11,15 +11,18 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "testserver"]
 
 INSTALLED_APPS = [
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
+    "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
     "drf_spectacular",
     "quiz",
+    "catalog",
 ]
 
 MIDDLEWARE = [
@@ -29,6 +32,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
 ]
 
 TEMPLATES = [{
@@ -38,6 +42,7 @@ TEMPLATES = [{
     "OPTIONS": {"context_processors": [
         "django.template.context_processors.request",
         "django.contrib.auth.context_processors.auth",
+        "django.contrib.messages.context_processors.messages",
     ]},
 }]
 
@@ -57,6 +62,8 @@ USE_I18N = True
 USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATIC_URL = "static/"  # without it, the test server (LiveServerTestCase) answers 500 to every request
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 REST_FRAMEWORK = {
     # Tokens for HTTP clients; CSRF-protected sessions for the browsable API.
@@ -75,7 +82,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "API de cuestionarios",
+    "TITLE": "API de cuestionarios y catálogo",
     "DESCRIPTION": "El contrato de la API del laboratorio: lo que usan el cliente de consola y el agente.",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,

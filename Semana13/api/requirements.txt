@@ -3,3 +3,4 @@ djangorestframework>=3.16
 drf-spectacular>=0.28
 requests>=2.32
 django-cors-headers>=4.9,<5
+Pillow>=11,<13
