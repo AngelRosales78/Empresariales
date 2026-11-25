@@ -1,0 +1,16 @@
+.store { min-height: 100vh; background: #f4f6f2; color: #1c261f; color-scheme: light; }
+.store-nav { display: flex; align-items: center; gap: 24px; padding: 18px max(20px, calc((100% - 1120px) / 2)); background: #1d3327; color: #fff; }
+.store-brand { margin-right: auto; font-size: 1.15rem; font-weight: 700; }
+.store .store-main { width: auto; max-width: 1160px; margin: auto; padding: 32px 20px 64px; }
+.store-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.store-heading h1 { margin: 0; font-size: 2rem; }
+.store-button { display: inline-block; padding: 9px 14px; border: 1px solid transparent; border-radius: 6px; background: #22603f; color: #fff; font-size: .95rem; font-weight: 600; }
+.store-button--secondary { border-color: #b9c6bd; background: #fff; color: #1d3327; }
+.store-button--danger { border-color: #e3b9b5; background: #fff; color: #a1261b; }
+.store-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.store-filter { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.store select, .store textarea, .store input { padding: 9px 11px; border: 1px solid #7d8c82; border-radius: 6px; background: #fff; color: inherit; font: inherit; }
+.store-notice { padding: 10px 14px; border-radius: 6px; background: #dcefe2; color: #174a2f; }
+.store-error { color: #a1261b; }
+.store :focus-visible { outline: 2px solid #22603f; outline-offset: 2px; }
+.store .store-nav :focus-visible { outline-color: #fff; }
