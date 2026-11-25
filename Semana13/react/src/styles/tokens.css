@@ -1,0 +1,12 @@
+:root {
+  color-scheme: dark;
+  --color-bg: #141614;
+  --color-surface: #1d201c;
+  --color-text: #f1eedf;
+  --color-muted: #a3a699;
+  --color-line: #34382f;
+  --color-accent: #d9ee95;
+  --font-body: 'Segoe UI', Arial, sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --page-width: 1280px;
+}

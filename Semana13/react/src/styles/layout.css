@@ -1,0 +1,8 @@
+.site-header, main, .site-footer { width: min(var(--page-width), calc(100% - 96px)); margin-inline: auto; }
+.movie-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 28px; row-gap: 32px; }
+.section-heading, .billboard-toolbar, .billboard-info { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-top { display: grid; grid-template-columns: 1.25fr 1fr 1fr auto; gap: 36px; }
+@media (max-width: 1100px) { .billboard-toolbar { flex-wrap: wrap; gap: 18px; } .search-field { margin-left: auto; } .movie-grid { column-gap: 20px; } }
+@media (max-width: 900px) { .movie-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .footer-top { grid-template-columns: 1fr 1fr; } .back-top { justify-self: end; } }
+@media (max-width: 600px) { .section-heading { align-items: start; flex-direction: column; gap: 10px; } .billboard-info { gap: 8px; align-items: start; } .movie-grid { column-gap: 16px; row-gap: 24px; } .footer-top { gap: 28px; } .footer-brand { grid-column: 1 / -1; } }
+@media (max-width: 700px) { .site-header, main, .site-footer { width: calc(100% - 36px); } }
