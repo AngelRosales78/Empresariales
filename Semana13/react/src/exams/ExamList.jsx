@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { deleteExam, describeError, listExams } from '../api/exams'
+import { describeError } from '../services/apiClient'
+import { deleteExam, listExams } from '../services/examService'
 
 const dateFormat = new Intl.DateTimeFormat('es-PE', { dateStyle: 'medium', timeZone: 'America/Lima' })
 

@@ -27,6 +27,7 @@ export default function ExamsApp() {
     <div className="exam-app">
       <nav className="exam-nav" aria-label="Navegación principal">
         <a href="#examenes">Gestión de exámenes</a>
+        <a href="/">Catálogo</a>
         <a href="/cartelera">Cartelera</a>
       </nav>
       <main className="exam-main">

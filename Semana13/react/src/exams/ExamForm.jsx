@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { createExam, describeError } from '../api/exams'
+import { describeError } from '../services/apiClient'
+import { createExam } from '../services/examService'
 
 export default function ExamForm({ onCreated }) {
   const [title, setTitle] = useState('')
